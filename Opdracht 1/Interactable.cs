@@ -20,6 +20,11 @@ public abstract class Interactable : GameObject
         );
     }
 
+    public override void Update(Player pPlayer)
+    {
+        HandleInteraction(pPlayer);
+    }
+
     /// <summary>
     /// Checks for collision with Player object, then calls interaction functionality logic.
     /// </summary>

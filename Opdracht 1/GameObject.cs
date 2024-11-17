@@ -55,6 +55,11 @@ public class GameObject
 
     }
 
+    public virtual void Update(Player pPlayer)
+    {
+
+    }
+
     public virtual void Draw(SpriteBatch pSpriteBatch)
     {
         if (_texture == null) return;

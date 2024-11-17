@@ -14,7 +14,7 @@ public class Game1 : Game
     private Player _player;
 
     private readonly List<GameObject> _gameObjects = new();
-    private readonly List<Interactable> _interactables = new();
+
     public static int ScreenWidth { get; private set; }
     public static int ScreenHeight { get; private set; }
 
@@ -46,9 +46,9 @@ public class Game1 : Game
         Gate gate = new Gate(Content.Load<Texture2D>("Textures/Gate"), random);
 
         _gameObjects.Add(_player);
-        _interactables.Add(sword);
-        _interactables.Add(shield);
-        _interactables.Add(gate);
+        _gameObjects.Add(sword);
+        _gameObjects.Add(shield);
+        _gameObjects.Add(gate);
     }
 
     protected override void Update(GameTime gameTime)
@@ -57,12 +57,10 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
-        _gameObjects.ForEach(obj => obj.Update(gameTime));
-
-        _interactables.ForEach(interactable =>
+        _gameObjects.ForEach(obj => 
         {
-            interactable.Update(gameTime);
-            interactable.HandleInteraction(_player);
+            obj.Update(gameTime);
+            obj.Update(_player);
         });
 
         base.Update(gameTime);
@@ -74,7 +72,6 @@ public class Game1 : Game
 
         _spriteBatch.Begin(SpriteSortMode.FrontToBack);
         _gameObjects.ForEach(obj => obj.Draw(_spriteBatch));
-        _interactables.ForEach(interactable => interactable.Draw(_spriteBatch));
         _spriteBatch.End();
 
         // TODO: Add your drawing code here
