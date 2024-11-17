@@ -3,7 +3,7 @@ namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
 
 public class Gate : Interactable
 {
-    public Gate(Texture2D pTexture, Random pRandom) : base(pTexture, pRandom) { }
+    public Gate(Texture2D pTexture, Random pRandom, Player pPlayer) : base(pTexture, pRandom, pPlayer) { }
 
     /// <summary>
     /// The functionality which happens when player interacts with <see cref="Gate"/> object.

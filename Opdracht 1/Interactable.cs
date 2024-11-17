@@ -3,9 +3,11 @@ namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
 public abstract class Interactable : GameObject
 {
     protected Random _random;
-    public Interactable(Texture2D pTexture, Random pRandom) : base(pTexture)
+    private Player _player;
+    public Interactable(Texture2D pTexture, Random pRandom, Player pPlayer) : base(pTexture)
     {
         _random = pRandom;
+        _player = pPlayer;
         RandomizePosition();
     }
 
@@ -20,9 +22,9 @@ public abstract class Interactable : GameObject
         );
     }
 
-    public override void Update(Player pPlayer)
+    public override void Update(GameTime pGameTime)
     {
-        HandleInteraction(pPlayer);
+        HandleInteraction(_player);
     }
 
     /// <summary>

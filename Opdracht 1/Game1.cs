@@ -41,9 +41,9 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
         Random random = new Random();
         _player = new Player(Content.Load<Texture2D>("Textures/Knight"));
-        Sword sword = new Sword(Content.Load<Texture2D>("Textures/Weapon"), random);
-        Shield shield = new Shield(Content.Load<Texture2D>("Textures/Shield"), random);
-        Gate gate = new Gate(Content.Load<Texture2D>("Textures/Gate"), random);
+        Sword sword = new Sword(Content.Load<Texture2D>("Textures/Weapon"), random, _player);
+        Shield shield = new Shield(Content.Load<Texture2D>("Textures/Shield"), random, _player);
+        Gate gate = new Gate(Content.Load<Texture2D>("Textures/Gate"), random, _player);
 
         _gameObjects.Add(_player);
         _gameObjects.Add(sword);
@@ -57,11 +57,7 @@ public class Game1 : Game
             Exit();
 
         // TODO: Add your update logic here
-        _gameObjects.ForEach(obj => 
-        {
-            obj.Update(gameTime);
-            obj.Update(_player);
-        });
+        _gameObjects.ForEach(obj => obj.Update(gameTime));
 
         base.Update(gameTime);
     }
