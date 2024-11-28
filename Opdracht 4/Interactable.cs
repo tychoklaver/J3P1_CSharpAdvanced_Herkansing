@@ -1,26 +1,14 @@
 ﻿
-namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
+namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_4;
 public abstract class Interactable : GameObject
 {
     protected Random _random;
-    private Player _player;
+    private readonly Player _player;
     public Interactable(Texture2D pTexture, Random pRandom, Player pPlayer) : base(pTexture)
     {
         _random = pRandom;
         _player = pPlayer;
-        //RandomizePosition();
     }
-
-    /// <summary>
-    /// Randomizes starting position of the object.
-    /// </summary>
-    //protected void RandomizePosition()
-    //{
-    //    Position = new Vector2(
-    //        _random.Next((int)_origin.X, Game1.ScreenWidth - (int)_origin.X),
-    //        _random.Next((int)_origin.Y, Game1.ScreenHeight - (int)_origin.Y)
-    //    );
-    //}
 
     public override void Update(GameTime pGameTime)
     {

@@ -1,12 +1,13 @@
-﻿namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
+﻿namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_4;
 public class Player : GameObject
 {
-    private const float _playerSpeed = 300f;
+    private const float PLAYER_SPEED = 300f;
 
     public Shield EquippedShield { get; private set; }
     public Sword EquippedSword { get; private set; }
+    public int PlayerLives { get; private set; }
 
-    public Player(Texture2D pTexture) : base(pTexture) { }
+    public Player(Texture2D pTexture) : base(pTexture) { PlayerLives = 3; }
 
     public override void Update(GameTime pGameTime)
     {
@@ -18,6 +19,8 @@ public class Player : GameObject
 
         base.Update(pGameTime);
     }
+
+    public void LoseHealth() => PlayerLives--;
 
 
     public override void Draw(SpriteBatch pSpriteBatch)
@@ -56,7 +59,7 @@ public class Player : GameObject
         if (direction != Vector2.Zero)
             direction.Normalize();
 
-        _position += direction * _playerSpeed * (float)pGameTime.ElapsedGameTime.TotalSeconds;
+        _position += direction * PLAYER_SPEED * (float)pGameTime.ElapsedGameTime.TotalSeconds;
 
         _position.X = MathHelper.Clamp(_position.X, _origin.X, Game1.ScreenWidth - _origin.X);
         _position.Y = MathHelper.Clamp(_position.Y, _origin.Y, Game1.ScreenHeight - _origin.Y);

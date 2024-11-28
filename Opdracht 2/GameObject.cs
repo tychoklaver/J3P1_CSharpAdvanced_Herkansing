@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
+namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_2;
 public class GameObject
 {
     protected Texture2D _texture;
@@ -46,8 +46,8 @@ public class GameObject
     {
         Random random = new Random();
         Position = new Vector2(
-            random.Next((int)_origin.X, Game1.ScreenWidth - (int)_origin.X),
-            random.Next((int)_origin.Y, Game1.ScreenHeight - (int)_origin.Y)
+            random.Next((int)_origin.X, Game1.ScreenWidth + (int)_origin.X),
+            random.Next((int)_origin.Y, Game1.ScreenHeight + (int)_origin.Y)
         );
 
         _texture = pTexture;
@@ -67,5 +67,16 @@ public class GameObject
     {
         if (_texture == null) return;
         pSpriteBatch.Draw(_texture, _position, null, _color, _rotation, _origin, _scale, SpriteEffects.None, _layerDepth);
+    }
+
+    public void DrawText(SpriteBatch pSpriteBatch, SpriteFont pFont, string pText, Vector2 pPosition)
+    {
+        Vector2 textSize = pFont.MeasureString(pText);
+        Vector2 textPosition = new Vector2(
+            pPosition.X - textSize.X / 2,
+            pPosition.Y - textSize.Y / 2
+        );
+
+        pSpriteBatch.DrawString(pFont, pText, textPosition, Color.White);
     }
 }

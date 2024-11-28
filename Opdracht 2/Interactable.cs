@@ -1,5 +1,5 @@
 ﻿
-namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
+namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_2;
 public abstract class Interactable : GameObject
 {
     protected Random _random;

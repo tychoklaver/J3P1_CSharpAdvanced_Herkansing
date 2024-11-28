@@ -1,4 +1,4 @@
-﻿namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_1;
+﻿namespace J3P1_CSharpAdvanced_Herkansing.Opdracht_2;
 public class Player : GameObject
 {
     private const float _playerSpeed = 300f;
